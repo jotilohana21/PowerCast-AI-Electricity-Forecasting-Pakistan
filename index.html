@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PowerCast — AI Electricity Load Forecasting Pakistan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo" onclick="showPage('home')">
+    <div class="logo-bolt">⚡</div>PowerCast
+  </div>
+  <div class="nav-links">
+    <button class="nav-link active" onclick="showPage('home')">home</button>
+    <button class="nav-link" onclick="showPage('about')">about</button>
+    <button class="nav-link" onclick="showPage('project')">project</button>
+    <button class="nav-link" onclick="showPage('results')">results</button>
+  </div>
+  <a class="nav-kaggle" href="https://www.kaggle.com/code/jotilohana/powercast-ai-electricity-forecasting-pakistan" target="_blank">View Notebook ↗</a>
+</nav>
+
+<!-- HOME -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="grid-bg"></div>
+    <div class="glow-orb"></div>
+    <svg class="wave-svg" viewBox="0 0 1440 130" preserveAspectRatio="none">
+      <polyline points="0,100 80,100 130,38 185,112 245,22 315,105 405,62 495,94 570,35 660,86 750,40 855,78 955,45 1065,88 1165,50 1280,80 1380,58 1440,78"
+        fill="none" stroke="#eda100" stroke-width="2">
+        <animate attributeName="stroke-dasharray" from="0,3000" to="3000,0" dur="2.2s" fill="freeze"/>
+      </polyline>
+    </svg>
+    <div class="hero-badge"><div class="bdot"></div>AI/ML Research · Pakistan · 2025</div>
+    <h1>Forecasting <span class="acc">Pakistan's</span><br>electricity future</h1>
+    <p class="hero-sub">A time-series AI system that predicts national grid demand, benchmarks Linear Regression vs ARIMA, and directly targets the load-shedding crisis.</p>
+    <div class="cta-row">
+      <button class="btn-p" onclick="showPage('results')">View results →</button>
+      <button class="btn-g" onclick="showPage('project')">How it works</button>
+    </div>
+  </div>
+
+  <div class="ticker-wrap">
+    <div class="ticker" id="ticker"></div>
+  </div>
+
+  <div class="stat-strip">
+    <div class="sc"><span class="sv a" data-t="30" data-s="+">0</span><span class="sl">Years of data</span></div>
+    <div class="sc"><span class="sv t" data-t="18" data-s="%">0</span><span class="sl">RMSE improvement</span></div>
+    <div class="sc"><span class="sv w" data-t="116" data-s="K GWh">0</span><span class="sl">Peak demand 2021</span></div>
+    <div class="sc"><span class="sv b" data-t="10">0</span><span class="sl">DISCO zones</span></div>
+    <div class="sc"><span class="sv w" data-t="2030">0</span><span class="sl">Forecast horizon</span></div>
+  </div>
+
+  <div class="home-body">
+    <div class="ey">About this project</div>
+    <h2 class="sh">Why Pakistan's grid needs AI forecasting</h2>
+    <p class="sp">Pakistan faces chronic load-shedding — unplanned power outages costing the economy billions annually. Accurate demand forecasting lets grid operators schedule generation proactively, reducing outages before they happen. PowerCast applies ML to 30+ years of historical data to predict what's coming.</p>
+
+    <div class="feat-grid">
+      <div class="fc"><div class="fi" style="background:var(--blue-dim)">📊</div><h3>Real historical data</h3><p>World Energy Consumption dataset — validated against NEPRA State of Industry Report 2022-23.</p></div>
+      <div class="fc"><div class="fi" style="background:var(--amber-dim)">⚙️</div><h3>Two models benchmarked</h3><p>Linear Regression vs ARIMA — head-to-head on RMSE, MAE, R². ARIMA wins with 18% lower error.</p></div>
+      <div class="fc"><div class="fi" style="background:var(--teal-dim)">🗺️</div><h3>Zone-wise breakdown</h3><p>Demand analyzed across all 10 Pakistan DISCOs — from LESCO Lahore to QESCO Quetta.</p></div>
+      <div class="fc"><div class="fi" style="background:var(--red-dim)">📋</div><h3>Policy brief output</h3><p>Findings converted to actionable recommendations for grid planners and energy policymakers.</p></div>
+    </div>
+
+    <div class="unique-box">
+      <div class="ey">What makes PowerCast different</div>
+      <h2 class="sh" style="font-size:22px;margin-bottom:0">Not just another forecasting project</h2>
+      <div class="u-grid">
+        <div class="ui"><div class="u-ic" style="background:var(--blue-dim);color:var(--blue)">🇵🇰</div><div class="ut"><h4>Pakistan-specific</h4><p>Targets real load-shedding crisis — not a generic tutorial dataset.</p></div></div>
+        <div class="ui"><div class="u-ic" style="background:var(--amber-dim);color:var(--amber)">⚖️</div><div class="ut"><h4>Dual benchmarking</h4><p>Two models compared rigorously — not just one model's accuracy printed.</p></div></div>
+        <div class="ui"><div class="u-ic" style="background:var(--teal-dim);color:var(--teal)">🧪</div><div class="ut"><h4>ADF stationarity test</h4><p>Proper statistical testing before ARIMA — not blindly applied.</p></div></div>
+        <div class="ui"><div class="u-ic" style="background:var(--red-dim);color:var(--red)">✅</div><div class="ut"><h4>NEPRA validated</h4><p>Data cross-checked against official NEPRA annual report figures.</p></div></div>
+        <div class="ui"><div class="u-ic" style="background:var(--blue-dim);color:var(--blue)">🔮</div><div class="ut"><h4>2030 forecast + confidence band</h4><p>6-year future prediction with ±10% uncertainty interval.</p></div></div>
+        <div class="ui"><div class="u-ic" style="background:var(--amber-dim);color:var(--amber)">📌</div><div class="ut"><h4>Policy brief output</h4><p>Data → recommendations — real-world impact beyond just metrics.</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-left">
+      <span class="footer-logo">⚡ PowerCast</span>
+      <div class="footer-dot"></div>
+      <span class="footer-tag">AI Electricity Load Forecasting · Pakistan · 2026</span>
+    </div>
+    <div class="footer-right">
+      <a class="footer-link" href="https://www.kaggle.com/code/jotilohana/powercast-ai-electricity-forecasting-pakistan" target="_blank">Kaggle Notebook</a>
+      <span class="footer-div">·</span>
+      <a class="footer-link" href="https://github.com/jotilohana21" target="_blank">GitHub</a>
+      <span class="footer-div">·</span>
+      <a class="footer-link" href="https://linkedin.com/in/jotilohana-6471a62a6" target="_blank">LinkedIn</a>
+    </div>
+  </footer>
+</div>
+
+<!--  ABOUT  -->
+<div class="page" id="page-about">
+  <div class="about-header">
+    <div class="ey">Project overview</div>
+    <h1>About PowerCast</h1>
+    <p>PowerCast is an AI-powered electricity load forecasting system built to tackle Pakistan's chronic load-shedding crisis using real historical demand data, statistical modeling, and time-series machine learning.</p>
+    <div class="tag-row">
+      <span class="tag b">Time Series</span>
+      <span class="tag b">ARIMA</span>
+      <span class="tag a">Pakistan Grid</span>
+      <span class="tag a">NEPRA Data</span>
+      <span class="tag t">Load Forecasting</span>
+      <span class="tag t">Policy Research</span>
+    </div>
+  </div>
+
+  <div class="about-body">
+    <div class="about-sec">
+      <h2>The problem</h2>
+      <p>Pakistan experiences some of the world's most severe load-shedding — sometimes 10–12 hours daily in rural areas. The root cause is not just a supply deficit, but poor demand forecasting. Without knowing when and where electricity is needed most, generation scheduling is reactive, wasteful, and unreliable.</p>
+      <div class="prob-grid">
+        <div class="prob-card">
+          <div class="prob-icon">⚡</div>
+          <h4>10–12 hrs daily outages</h4>
+          <p>Rural Pakistan faces severe load-shedding, disrupting agriculture, education, and small businesses.</p>
+        </div>
+        <div class="prob-card">
+          <div class="prob-icon">📉</div>
+          <h4>Billions lost annually</h4>
+          <p>Pakistan's economy loses an estimated $4–6 billion per year due to unplanned power outages.</p>
+        </div>
+        <div class="prob-card">
+          <div class="prob-icon">🔁</div>
+          <h4>Reactive scheduling</h4>
+          <p>Grid operators currently respond to outages after they occur — not before. AI forecasting flips this.</p>
+        </div>
+        <div class="prob-card">
+          <div class="prob-icon">🌱</div>
+          <h4>Fossil fuel dependence</h4>
+          <p>Over 70% of Pakistan's electricity comes from fossil fuels — inefficient and expensive to scale rapidly.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-sec">
+      <h2>The PowerCast solution</h2>
+      <p>PowerCast trains two ML models on 30+ years of Pakistan electricity data, compares their forecasting accuracy, and delivers zone-wise demand predictions for 2025–2030 — giving grid operators the intelligence to act before outages happen.</p>
+      <div class="solution-steps">
+        <div class="sol-step"><div class="sol-num">1</div><div><h4>Historical data analysis (1991–2022)</h4><p>Demand trends, generation mix, and growth patterns extracted from 30+ years of data.</p></div></div>
+        <div class="sol-step"><div class="sol-num">2</div><div><h4>Feature engineering</h4><p>Lag features, rolling averages, and YoY growth rates built to improve model signal.</p></div></div>
+        <div class="sol-step"><div class="sol-num">3</div><div><h4>Linear Regression vs ARIMA benchmarking</h4><p>Two models trained and evaluated on identical test data — ARIMA wins by 18% RMSE.</p></div></div>
+        <div class="sol-step"><div class="sol-num">4</div><div><h4>Zone-wise DISCO analysis</h4><p>Demand broken down across 10 regional distribution companies for targeted planning.</p></div></div>
+        <div class="sol-step"><div class="sol-num">5</div><div><h4>2030 demand forecast</h4><p>6-year ahead projection with confidence bands — Pakistan needs ~122,800 GWh by 2030.</p></div></div>
+        <div class="sol-step"><div class="sol-num">6</div><div><h4>Policy brief</h4><p>Findings translated into actionable recommendations for NEPRA and grid planners.</p></div></div>
+      </div>
+    </div>
+
+    <div class="about-sec">
+      <h2>Impact & key outcomes</h2>
+      <div class="impact-grid">
+        <div class="impact-card">
+          <span class="impact-val" style="color:#eda100">18%</span>
+          <span class="impact-label">RMSE reduction — ARIMA vs Linear Regression</span>
+        </div>
+        <div class="impact-card">
+          <span class="impact-val" style="color:#2a78d6">122K</span>
+          <span class="impact-label">GWh projected demand by 2030</span>
+        </div>
+        <div class="impact-card">
+          <span class="impact-val" style="color:#1baf7a">10</span>
+          <span class="impact-label">DISCO zones mapped across Pakistan</span>
+        </div>
+        <div class="impact-card">
+          <span class="impact-val" style="color:#e34948">36%</span>
+          <span class="impact-label">National load — LESCO + MEPCO combined</span>
+        </div>
+        <div class="impact-card">
+          <span class="impact-val" style="color:#eda100">3×</span>
+          <span class="impact-label">Renewable increase needed by 2030</span>
+        </div>
+        <div class="impact-card">
+          <span class="impact-val" style="color:#2a78d6">30+</span>
+          <span class="impact-label">Years of historical data analyzed</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-sec">
+      <h2>Data source & validation</h2>
+      <p>Primary dataset: <strong style="color:var(--text)">World Energy Consumption</strong> (Our World in Data, via Kaggle) — Pakistan slice from 1991 to 2022. All key figures were cross-validated against the <strong style="color:var(--text)">NEPRA State of Industry Report 2022-23</strong> to ensure accuracy:</p>
+      <div class="prob-grid">
+        <div class="prob-card">
+          <div class="prob-icon">✅</div>
+          <h4>Peak demand 2021</h4>
+          <p>116,816 GWh — confirmed by NEPRA annual report.</p>
+        </div>
+        <div class="prob-card">
+          <div class="prob-icon">✅</div>
+          <h4>2022 consumption</h4>
+          <p>110,647 GWh — matches NEPRA post-economic-contraction figures.</p>
+        </div>
+        <div class="prob-card">
+          <div class="prob-icon">✅</div>
+          <h4>Annual growth rate</h4>
+          <p>~3.5% per year — consistent with NEPRA 10-year trend analysis.</p>
+        </div>
+        <div class="prob-card">
+          <div class="prob-icon">✅</div>
+          <h4>LESCO highest zone</h4>
+          <p>22% share — confirmed as highest-load DISCO in NEPRA zonal data.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-left">
+      <span class="footer-logo">⚡ PowerCast</span>
+      <div class="footer-dot"></div>
+      <span class="footer-tag">AI Electricity Load Forecasting · Pakistan · 2026</span>
+    </div>
+    <div class="footer-right">
+      <a class="footer-link" href="https://www.kaggle.com/code/jotilohana/powercast-ai-electricity-forecasting-pakistan" target="_blank">Kaggle Notebook</a>
+      <span class="footer-div">·</span>
+      <a class="footer-link" href="https://github.com/jotilohana21" target="_blank">GitHub</a>
+      <span class="footer-div">·</span>
+      <a class="footer-link" href="https://linkedin.com/in/jotilohana-6471a62a6" target="_blank">LinkedIn</a>
+    </div>
+  </footer>
+</div>
+
+<!--  PROJECT  -->
+<div class="page" id="page-project">
+  <div class="ph">
+    <div class="ey">Methodology</div>
+    <h1>How PowerCast works</h1>
+    <p class="sub">A complete ML pipeline — from raw energy data to actionable forecasts — built in Python on Kaggle with open-source tools.</p>
+    <div class="tag-row">
+      <span class="tag b">Python 3.12</span><span class="tag b">Scikit-learn</span>
+      <span class="tag b">Statsmodels</span><span class="tag b">Pandas</span>
+      <span class="tag a">ARIMA</span><span class="tag a">Linear Regression</span><span class="tag a">ADF Test</span>
+      <span class="tag t">Matplotlib</span><span class="tag t">Seaborn</span><span class="tag t">Kaggle</span>
+    </div>
+  </div>
+  <div class="pb">
+    <div class="ps">
+      <h2>Dataset & NEPRA validation</h2>
+      <p>World Energy Consumption dataset (Our World in Data via Kaggle) — Pakistan slice 1991–2022. Columns: <code>electricity_demand</code>, <code>fossil_electricity</code>, <code>renewables_electricity</code>, <code>hydro_electricity</code>, <code>population</code>, <code>gdp</code>. All figures validated against NEPRA State of Industry Report 2022-23 — peak demand 116,816 GWh (2021) confirmed ✅</p>
+    </div>
+    <div class="ps">
+      <h2>Pipeline — 10 steps</h2>
+      <div class="pipeline">
+        <div class="pstep"><div class="pnum">1</div><div class="pc"><h4>Data loading & Pakistan filter</h4><p>Loaded full world dataset, filtered for Pakistan, sorted chronologically.</p></div></div>
+        <div class="pstep"><div class="pnum">2</div><div class="pc"><h4>Cleaning & interpolation</h4><p>Missing values filled with linear interpolation + forward fill. Zero data dropped.</p></div></div>
+        <div class="pstep"><div class="pnum">3</div><div class="pc"><h4>Feature engineering</h4><p>Lag features (1, 2, 3 years), 3-year and 5-year rolling averages, year-over-year growth %.</p></div></div>
+        <div class="pstep"><div class="pnum">4</div><div class="pc"><h4>ADF stationarity test</h4><p>Augmented Dickey-Fuller test determined differencing order (d=1) for ARIMA — not skipped like most student projects.</p></div></div>
+        <div class="pstep"><div class="pnum">5</div><div class="pc"><h4>Train-test split (80/20)</h4><p>Training: 1991–2016 | Testing: 2017–2022. Chronological split — no data leakage.</p></div></div>
+        <div class="pstep"><div class="pnum">6</div><div class="pc"><h4>Linear Regression</h4><p>Trained on lag + rolling features. Serves as baseline benchmark model.</p></div></div>
+        <div class="pstep"><div class="pnum">7</div><div class="pc"><h4>ARIMA (1,1,1)</h4><p>Time-series model — p=1, d=1, q=1. Achieves 18% lower RMSE than Linear Regression.</p></div></div>
+        <div class="pstep"><div class="pnum">8</div><div class="pc"><h4>Forecast 2025–2030</h4><p>ARIMA extended 6 years ahead with ±10% confidence band.</p></div></div>
+        <div class="pstep"><div class="pnum">9</div><div class="pc"><h4>Zone-wise DISCO heatmap</h4><p>NEPRA DISCO percentage shares applied to historical data for regional breakdown.</p></div></div>
+        <div class="pstep"><div class="pnum">10</div><div class="pc"><h4>Policy brief output</h4><p>Findings documented as actionable recommendations for grid planners and policymakers.</p></div></div>
+      </div>
+    </div>
+    <div class="ps">
+      <h2>Technologies</h2>
+      <div class="tech-row">
+        <div class="chip">Python 3.12</div><div class="chip">Pandas</div><div class="chip">NumPy</div>
+        <div class="chip">Scikit-learn</div><div class="chip">Statsmodels</div><div class="chip">ARIMA</div>
+        <div class="chip">ADF Test</div><div class="chip">Matplotlib</div><div class="chip">Seaborn</div><div class="chip">Kaggle</div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-left">
+      <span class="footer-logo">⚡ PowerCast</span>
+      <div class="footer-dot"></div>
+      <span class="footer-tag">AI Electricity Load Forecasting · Pakistan · 2026</span>
+    </div>
+    <div class="footer-right">
+      <a class="footer-link" href="https://www.kaggle.com/code/jotilohana/powercast-ai-electricity-forecasting-pakistan" target="_blank">Kaggle Notebook</a>
+      <span class="footer-div">·</span>
+      <a class="footer-link" href="https://github.com/jotilohana21" target="_blank">GitHub</a>
+      <span class="footer-div">·</span>
+      <a class="footer-link" href="https://linkedin.com/in/jotilohana-6471a62a6" target="_blank">LinkedIn</a>
+    </div>
+  </footer>
+</div>
+
+<!--  RESULTS  -->
+<div class="page" id="page-results">
+  <div class="rh">
+    <div class="ey">Model outputs</div>
+    <h1>Results & findings</h1>
+    <p style="font-size:15px;color:var(--text2)">All charts generated from the live Kaggle notebook. Data validated against NEPRA State of Industry Report 2022-23.</p>
+  </div>
+  <div class="rb">
+    <div class="kpi-row">
+      <div class="kpi"><div class="kl">Best model</div><div class="kv">ARIMA</div><div class="ks neu">vs Linear Regression</div></div>
+      <div class="kpi"><div class="kl">RMSE improvement</div><div class="kv">18%</div><div class="ks up">↑ ARIMA wins</div></div>
+      <div class="kpi"><div class="kl">Peak demand</div><div class="kv">2021</div><div class="ks neu">116,816 GWh</div></div>
+      <div class="kpi"><div class="kl">Annual growth</div><div class="kv">3.5%</div><div class="ks neu">since 1991</div></div>
+      <div class="kpi"><div class="kl">2030 forecast</div><div class="kv">122K</div><div class="ks dn">GWh projected</div></div>
+    </div>
+
+    <div class="cc">
+      <h3>Pakistan electricity demand — 1991 to 2022</h3>
+      <p class="cd">30+ year trend: 31,534 GWh (1991) → peak 116,816 GWh (2021) → 110,647 GWh (2022).</p>
+      <div class="leg">
+        <span><span class="ld" style="background:#2a78d6"></span>Actual demand</span>
+        <span><span class="ld" style="background:#eda100;height:2px;width:16px;border-radius:0"></span>5-yr rolling avg</span>
+      </div>
+      <div class="cw" style="height:250px"><canvas id="c1"></canvas></div>
+    </div>
+
+    <div class="cc">
+      <h3>Linear Regression vs ARIMA — test comparison (2017–2022)</h3>
+      <p class="cd">ARIMA tracks actual demand more accurately across all 4 test points, achieving 18% lower RMSE.</p>
+      <div class="leg">
+        <span><span class="ld" style="background:#eeecea"></span>Actual</span>
+        <span><span class="ld" style="background:#e34948"></span>Linear Regression</span>
+        <span><span class="ld" style="background:#1baf7a"></span>ARIMA (1,1,1)</span>
+      </div>
+      <div class="cw" style="height:220px"><canvas id="c2"></canvas></div>
+      <div class="mc">
+        <div class="mb">
+          <span class="mbdg bb">Baseline</span>
+          <h4>Linear Regression</h4>
+          <div class="mm"><span class="mk">RMSE</span><span class="mv">Higher</span></div>
+          <div class="mm"><span class="mk">Features</span><span class="mv">Lag + rolling avg</span></div>
+          <div class="mm"><span class="mk">Type</span><span class="mv">Parametric</span></div>
+          <div class="mm"><span class="mk">Verdict</span><span class="mv">Baseline only</span></div>
+        </div>
+        <div class="mb win">
+          <span class="mbdg bw">🏆 Winner — 18% lower RMSE</span>
+          <h4>ARIMA (1,1,1)</h4>
+          <div class="mm"><span class="mk">RMSE</span><span class="mv g">18% lower ↓</span></div>
+          <div class="mm"><span class="mk">Order</span><span class="mv">p=1, d=1, q=1</span></div>
+          <div class="mm"><span class="mk">Type</span><span class="mv">Time-series</span></div>
+          <div class="mm"><span class="mk">Verdict</span><span class="mv g">Best model ✓</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cc">
+      <h3>Demand forecast — 2025 to 2030 (ARIMA)</h3>
+      <p class="cd">6-year projection with ±10% confidence band. Pakistan demand expected to reach ~122,800 GWh by 2030.</p>
+      <div class="leg">
+        <span><span class="ld" style="background:#2a78d6"></span>Historical</span>
+        <span><span class="ld" style="background:#e34948"></span>ARIMA forecast</span>
+        <span><span class="ld" style="background:rgba(227,73,72,0.22);width:16px;border-radius:0"></span>±10% band</span>
+      </div>
+      <div class="cw" style="height:250px"><canvas id="c3"></canvas></div>
+    </div>
+
+    <div class="cc">
+      <h3>Generation mix — fossil vs renewables over time</h3>
+      <p class="cd">Fossil fuel dominance persists. Renewables growing but insufficient — 3× increase needed by 2030.</p>
+      <div class="leg">
+        <span><span class="ld" style="background:#e34948"></span>Fossil fuel</span>
+        <span><span class="ld" style="background:#2a78d6"></span>Hydro</span>
+        <span><span class="ld" style="background:#1baf7a"></span>Renewables</span>
+      </div>
+      <div class="cw" style="height:230px"><canvas id="c4"></canvas></div>
+    </div>
+
+    <div class="cc">
+      <h3>Zone-wise load distribution — 10 Pakistan DISCOs</h3>
+      <p class="cd">LESCO (Lahore) + MEPCO (Multan) = 36% of total national load. Highest priority zones for grid investment.</p>
+      <div class="dg" id="discoGrid"></div>
+    </div>
+
+    <div class="cc">
+      <h3>Key findings & policy recommendations</h3>
+      <p class="cd">Data-driven insights from PowerCast — actionable for grid planners and energy policymakers.</p>
+      <div class="finds">
+        <div class="find"><div class="fic" style="background:var(--amber-dim)">↗</div><div class="ftx"><h4>3.5% annual demand growth since 1991</h4><p>Pakistan's 2030 forecast of ~122,800 GWh requires immediate generation and transmission expansion to avoid worsening load-shedding.</p></div></div>
+        <div class="find"><div class="fic" style="background:var(--red-dim)">⚠</div><div class="ftx"><h4>LESCO & MEPCO are highest-priority investment zones</h4><p>Lahore (22%) and Multan (14%) account for 36% of national load. Grid modernization must prioritize these zones first.</p></div></div>
+        <div class="find"><div class="fic" style="background:var(--teal-dim)">☀</div><div class="ftx"><h4>Renewables need 3× increase by 2030</h4><p>Current clean energy share cannot meet projected demand. Accelerated solar and hydro expansion is critical.</p></div></div>
+        <div class="find"><div class="fic" style="background:var(--blue-dim)">🤖</div><div class="ftx"><h4>AI forecasting enables proactive grid scheduling</h4><p>ARIMA-based predictions let operators schedule generation ahead of peak demand — reducing unplanned outages before they occur.</p></div></div>
+        <div class="find"><div class="fic" style="background:rgba(255,255,255,0.05)">🏭</div><div class="ftx"><h4>Industrial demand management can cut peak load 10–15%</h4><p>Time-of-use pricing in FESCO and GEPCO industrial zones can significantly flatten peak demand curves.</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-left">
+      <span class="footer-logo">⚡ PowerCast</span>
+      <div class="footer-dot"></div>
+      <span class="footer-tag">AI Electricity Load Forecasting · Pakistan · 2026</span>
+    </div>
+    <div class="footer-right">
+      <a class="footer-link" href="https://www.kaggle.com/code/jotilohana/powercast-ai-electricity-forecasting-pakistan" target="_blank">Kaggle Notebook</a>
+      <span class="footer-div">·</span>
+      <a class="footer-link" href="https://github.com/jotilohana21" target="_blank">GitHub</a>
+      <span class="footer-div">·</span>
+      <a class="footer-link" href="https://linkedin.com/in/jotilohana-6471a62a6" target="_blank">LinkedIn</a>
+    </div>
+  </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

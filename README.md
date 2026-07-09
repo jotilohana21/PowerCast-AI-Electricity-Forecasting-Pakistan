@@ -42,12 +42,14 @@ Pakistan faces one of the world's most severe load-shedding crises — with outa
 ---
 
 ## 🗂️ Project Structure
+
+```
 PowerCast/
 ├── index.html          # Website — Home, About, Project, Results pages
 ├── style.css           # Website styling
 ├── script.js           # Charts + animations
 └── README.md           # This file
-
+```
 ---
 
 ## 🔬 Methodology
@@ -84,9 +86,12 @@ PowerCast/
 ---
 
 ## 🛠️ Technologies
+
+```
 Python 3.12 · Pandas · NumPy · Scikit-learn
 Statsmodels · ARIMA · ADF Test
 Matplotlib · Seaborn · Kaggle Notebooks
+```
 
 ---
 
